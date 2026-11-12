@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web tính điểm trung bình và xếp hạng – Nhóm 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Đầu trang ===== -->
+  <header class="site-header">
+    <div class="container">
+      <p class="eyebrow">Đề tài</p>
+      <h1>Viết web tính điểm trung bình các môn học cho học sinh, sinh viên đồng thời xếp hạng</h1>
+      <p class="meta"><strong>Nhóm 2</strong> · Lớp K13A1</p>
+      <ul class="members">
+        <li>Bạch Gia Hưng – 26ATT102 (Nhóm trưởng)</li>
+        <li>Trần Đức Hữu – 26ATT105</li>
+        <li>Nguyễn Đình Hiếu – 26ATT077</li>
+        <li>Đường Xuân Hội – 26ATT087</li>
+        <li>Trần Văn Phát – 26ATT162</li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ===== Menu ===== -->
+  <nav class="site-nav" aria-label="Menu chính">
+    <ul>
+      <li><a href="#de-bai">1. Đề bài</a></li>
+      <li><a href="#ma-nguon">2. Mã nguồn</a></li>
+      <li><a href="#de-cuong">3. Đề cương đề tài</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+
+    <!-- ===== Mục 1: Đề bài ===== -->
+    <section id="de-bai">
+      <h2>1. Đề bài</h2>
+
+      <!-- ---------- Bài toán 1 ---------- -->
+      <h3>Bài toán 1: Tính học phí thực tế và xếp loại học bổng</h3>
+
+      <p><strong>Phát biểu bài toán.</strong>
+        Viết chương trình Python tính số tiền học phí thực tế phải đóng và xếp loại học bổng của
+        một sinh viên dựa trên các thông số cá nhân. Các thông số khởi tạo phụ thuộc vào
+        <code>N</code> (2 số cuối của mã sinh viên):</p>
+      <ul>
+        <li>Điểm trung bình tích lũy: <code>gpa = 5.0 + (N % 5) * 0.5</code></li>
+        <li>Điểm rèn luyện: <code>diem_ren_luyen = 60 + (N % 4) * 10</code></li>
+        <li>Học phí cơ bản: <code>hoc_phi_co_ban = 10000000 + (N * 100000)</code> (VNĐ)</li>
+      </ul>
+      <p>Xét học bổng và mức miễn giảm học phí theo thứ tự sau:</p>
+      <ul>
+        <li><code>gpa &gt;= 6.5</code> và <code>diem_ren_luyen &gt;= 80</code>: loại Xuất sắc, miễn giảm 50% học phí.</li>
+        <li><code>gpa &gt;= 5.5</code> và <code>diem_ren_luyen &gt;= 70</code>: loại Khá, miễn giảm 25% học phí.</li>
+        <li><code>gpa &gt;= 4.0</code> và <code>diem_ren_luyen &gt;= 50</code>: loại Trung bình, không miễn giảm.</li>
+        <li>Các trường hợp còn lại: Cảnh báo học vụ, phải đóng thêm 10% phí phạt.</li>
+      </ul>
+
+      <p><strong>Dữ liệu vào.</strong> Số <code>N</code> (2 số cuối của mã sinh viên), được gán sẵn trong chương trình (<code>n = 77</code>).</p>
+      <p><strong>Dữ liệu ra.</strong> Các thông số của sinh viên (GPA, điểm rèn luyện, học phí cơ bản), xếp loại học bổng và tổng học phí phải đóng, định dạng có dấu phẩy phân cách hàng nghìn, ví dụ <code>12,500,000 VNĐ</code>.</p>
+
+      <p><strong>Bảng bộ thử.</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Bộ thử</th>
+              <th>Đầu vào</th>
+              <th>Kết quả mong đợi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><pre>n = 34</pre></td>
+              <td><pre>---Thông tin sinh viên---
+GPA: 7.0
+Điểm rèn luyện: 80
+Học phí cơ bản: 13,400,000 VNĐ
+Xếp loại học bổng: Xuất sắc(Miễn giảm 50% học phí)
+=> Tổng học phí phải đóng: 6,700,000 VNĐ</pre></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><pre>n = 77</pre></td>
+              <td><pre>---Thông tin sinh viên---
+GPA: 6.0
+Điểm rèn luyện: 70
+Học phí cơ bản: 17,700,000 VNĐ
+Xếp loại học bổng: Khá(Miễn giảm 25% học phí)
+=> Tổng học phí phải đóng: 13,275,000 VNĐ</pre></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><pre>n = 10</pre></td>
+              <td><pre>---Thông tin sinh viên---
+GPA: 5.0
+Điểm rèn luyện: 80
+Học phí cơ bản: 11,000,000 VNĐ
+Xếp loại học bổng: Trung bình(Không miễn giảm)
+=> Tổng học phí phải đóng: 11,000,000 VNĐ</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ---------- Bài toán 2 ---------- -->
+      <h3>Bài toán 2: Đăng nhập bằng mã PIN và sinh mã OTP</h3>
+
+      <p><strong>Phát biểu bài toán.</strong>
+        Viết chương trình Python mô phỏng việc đăng nhập bằng mã PIN. Người dùng được nhập
+        sai mã PIN tối đa một số lần cho trước; nếu nhập sai hết số lần này thì tài khoản bị khóa.
+        Khi đăng nhập thành công, chương trình tự động sinh ra mã OTP: lấy số <code>N</code> nhân
+        lần lượt với các số từ 1 đến 5, kết quả là số chẵn thì đưa vào mã OTP, kết quả là số lẻ
+        thì bỏ qua. Cuối cùng in ra dãy mã OTP. Các thông số khởi tạo phụ thuộc vào <code>N</code>:</p>
+      <ul>
+        <li>Mã PIN đúng: <code>pin_dung = 1000 + N</code></li>
+        <li>Số lần nhập sai tối đa: <code>max_attempts = 3 + (N % 3)</code></li>
+      </ul>
+
+      <p><strong>Dữ liệu vào.</strong> Số <code>N</code> được gán sẵn trong chương trình (<code>n = 77</code>); mã PIN do người dùng nhập từ bàn phím, có thể nhập nhiều lần.</p>
+      <p><strong>Dữ liệu ra.</strong></p>
+      <ul>
+        <li>Nhập sai: thông báo <code>Sai! Bạn còn ... lần thử.</code></li>
+        <li>Nhập sai hết số lần tối đa: <code>Tài khoản đã bị khóa!</code> và kết thúc chương trình.</li>
+        <li>Nhập đúng: <code>Đăng nhập thành công!</code>, sau đó in dãy mã OTP gồm các kết quả chẵn, ngăn cách bằng dấu gạch ngang.</li>
+      </ul>
+
+      <p><strong>Bảng bộ thử.</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Bộ thử</th>
+              <th>Đầu vào</th>
+              <th>Kết quả mong đợi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><pre>n = 77
+PIN: 1077</pre></td>
+              <td><pre>Đăng nhập thành công!
+--- MÃ OTP CỦA BẠN ---
+OTP: 154-308</pre></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><pre>n = 34
+PIN: 1111, rồi 1034</pre></td>
+              <td><pre>Sai! Bạn còn 3 lần thử.
+Đăng nhập thành công!
+--- MÃ OTP CỦA BẠN ---
+OTP: 34-68-102-136-170</pre></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><pre>n = 77 (tối đa 5 lần)
+PIN: 1111, 2222, 3333, 4444, 5555</pre></td>
+              <td><pre>Sai! Bạn còn 4 lần thử.
+Sai! Bạn còn 3 lần thử.
+Sai! Bạn còn 2 lần thử.
+Sai! Bạn còn 1 lần thử.
+Tài khoản đã bị khóa!</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== Mục 2: Mã nguồn ===== -->
+    <section id="ma-nguon">
+      <h2>2. Mã nguồn</h2>
+
+      <h3>Bài toán 1 (file <code>baitoan1.py</code>)</h3>
+<pre class="code-block"><code>n = 77
+gpa = 5.0 + (n % 5) * 0.5
+diem_ren_luyen = 60 + (n % 4) * 10
+hoc_phi_co_ban = 10000000 + (n * 100000)
+print("---Thông tin sinh viên---")
+print(f"GPA: {gpa}")
+print(f"Điểm rèn luyện: {diem_ren_luyen}")
+print(f"Học phí cơ bản: {hoc_phi_co_ban:,} VNĐ")
+if gpa &gt;= 6.5 and diem_ren_luyen &gt;= 80:
+    xep_loai = "Xuất sắc(Miễn giảm 50% học phí)"
+    tong_hoc_phi = hoc_phi_co_ban * 50 // 100
+elif gpa &gt;= 5.5 and diem_ren_luyen &gt;= 70:
+    xep_loai = "Khá(Miễn giảm 25% học phí)"
+    tong_hoc_phi = hoc_phi_co_ban * 75 // 100
+elif gpa &gt;= 4.0 and diem_ren_luyen &gt;= 50:
+    xep_loai = "Trung bình(Không miễn giảm)"
+    tong_hoc_phi = hoc_phi_co_ban
+else:
+    xep_loai = "Cảnh báo học vụ(Phạt thêm 10%)"
+    tong_hoc_phi = hoc_phi_co_ban * 110 // 100
+print("Xếp loại học bổng:",xep_loai)
+print(f"=> Tổng học phí phải đóng: {tong_hoc_phi:,} VNĐ")
+</code></pre>
+
+      <h3>Bài toán 2 (file <code>baitoan2.py</code>)</h3>
+<pre class="code-block"><code>n = 77
+pin_dung = 1000 + n
+max_attempts = 3 + (n % 3)
+luot_con_lai = max_attempts
+
+while luot_con_lai &gt; 0:
+    nhap_ma_pin = input("Nhập mã PIN: ")
+    if nhap_ma_pin == str(pin_dung):
+        print("Đăng nhập thành công!")
+        otp = []
+        for i in range(1, 6):
+            ket_qua = n * i
+            if ket_qua % 2 != 0:
+                continue
+            otp.append(str(ket_qua))
+        print("--- MÃ OTP CỦA BẠN ---")
+        print("OTP: " + "-".join(otp))
+
+        break
+    luot_con_lai -= 1
+    if luot_con_lai &gt; 0:
+        print(f"Sai! Bạn còn {luot_con_lai} lần thử.")
+    else:
+        print("Tài khoản đã bị khóa!")
+</code></pre>
+
+      <h3>Ảnh kết quả chạy chương trình</h3>
+      <figure>
+        <img src="images/ketqua.png" alt="Ảnh chụp màn hình kết quả chạy baitoan1.py và baitoan2.py trong Terminal">
+        <figcaption>Hình 1. Kết quả chạy baitoan1.py và baitoan2.py (n = 77) trong Terminal.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== Mục 3: Đề cương đề tài ===== -->
+    <section id="de-cuong">
+      <h2>3. Đề cương đề tài</h2>
+
+      <h3>3.1. Tên đề tài</h3>
+      <p>Viết web tính điểm trung bình các môn học cho học sinh, sinh viên đồng thời xếp hạng.</p>
+
+      <h3>3.2. Lý do chọn đề tài</h3>
+      <p>
+        Học sinh, sinh viên thường phải tự tính điểm trung bình các môn học để biết kết quả học tập
+        của mình. Việc tính tay dễ nhầm lẫn, nhất là khi các môn có số tín chỉ hoặc hệ số khác nhau,
+        và khó so sánh với các bạn trong lớp. Một trang web giúp nhập điểm, tính điểm trung bình và
+        xếp hạng tự động sẽ tiết kiệm thời gian và cho kết quả chính xác.
+      </p>
+
+      <h3>3.3. Mục tiêu</h3>
+      <ul>
+        <li>Cho phép nhập điểm các môn học của từng học sinh, sinh viên.</li>
+        <li>Tự động tính điểm trung bình và xếp loại kết quả học tập.</li>
+        <li>Xếp hạng danh sách học sinh, sinh viên theo điểm trung bình từ cao xuống thấp.</li>
+        <li>Rèn luyện kỹ năng làm việc nhóm và xây dựng trang web hoàn chỉnh.</li>
+      </ul>
+
+      <h3>3.4. Đối tượng, phạm vi và công cụ</h3>
+      <ul>
+        <li>Đối tượng sử dụng: học sinh, sinh viên cần tính điểm trung bình và biết thứ hạng của mình.</li>
+        <li>Phạm vi: trang web chạy trên trình duyệt, tập trung vào tính điểm trung bình, xếp loại và xếp hạng.</li>
+        <li>Công cụ dự kiến: HTML, CSS, JavaScript và Visual Studio Code.</li>
+      </ul>
+
+      <h3>3.5. Chức năng dự kiến</h3>
+      <ol>
+        <li>Nhập thông tin học sinh, sinh viên và điểm từng môn học (kèm số tín chỉ hoặc hệ số).</li>
+        <li>Tính điểm trung bình các môn học.</li>
+        <li>Xếp loại học lực theo điểm trung bình.</li>
+        <li>Sắp xếp và hiển thị bảng xếp hạng theo điểm trung bình giảm dần.</li>
+      </ol>
+
+      <h3>3.6. Kế hoạch và phân công (dự kiến)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Công việc</th>
+              <th>Người thực hiện</th>
+              <th>Thời gian</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Phân tích yêu cầu, lập đề cương, điều phối nhóm</td>
+              <td>Bạch Gia Hưng</td>
+              <td>[Ngày – Ngày]</td>
+            </tr>
+            <tr>
+              <td>Thiết kế giao diện (HTML, CSS)</td>
+              <td>Trần Đức Hữu</td>
+              <td>[Ngày – Ngày]</td>
+            </tr>
+            <tr>
+              <td>Xử lý nhập điểm và tính điểm trung bình</td>
+              <td>Nguyễn Đình Hiếu</td>
+              <td>[Ngày – Ngày]</td>
+            </tr>
+            <tr>
+              <td>Xử lý xếp loại và xếp hạng</td>
+              <td>Đường Xuân Hội</td>
+              <td>[Ngày – Ngày]</td>
+            </tr>
+            <tr>
+              <td>Kiểm thử, hoàn thiện, viết báo cáo</td>
+              <td>Trần Văn Phát</td>
+              <td>[Ngày – Ngày]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+            <h3>Kế hoạch phân công công việc nhóm</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Thành viên</th>
+              <th>Công việc cụ thể</th>
+              <th>Thời hạn</th>
+              <th>Sản phẩm cần bàn giao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bạch Gia Hưng – 26ATT102</td>
+              <td>
+                1. Xác định mục tiêu và yêu cầu website.<br>
+                2. Liệt kê các chức năng cần xây dựng.<br>
+                3. Lập kế hoạch và theo dõi tiến độ.<br>
+                4. Tổng hợp kết quả của nhóm.
+              </td>
+              <td>Tuần 1-4; theo dõi xuyên suốt</td>
+              <td>Bản yêu cầu chức năng, kế hoạch thực hiện và bảng theo dõi tiến độ.</td>
+            </tr>
+            <tr>
+              <td>Trần Đức Hữu – 26ATT105</td>
+              <td>
+                1. Thiết kế bố cục giao diện.<br>
+                2. Xây dựng phần HTML và CSS.<br>
+                3. Bố trí khu vực nhập điểm và xem kết quả.<br>
+                4. Kiểm tra giao diện trên máy tính và điện thoại.
+              </td>
+              <td>Tuần 1-2</td>
+              <td>Giao diện website và ảnh chụp các màn hình chính.</td>
+            </tr>
+            <tr>
+              <td>Nguyễn Đình Hiếu – 26ATT077</td>
+              <td>
+                1. Xây dựng chức năng nhập điểm.<br>
+                2. Thêm, sửa và xóa môn học.<br>
+                3. Cài đặt công thức tính điểm trung bình.<br>
+                4. Kiểm tra các trường hợp nhập dữ liệu sai hoặc thiếu.
+              </td>
+              <td>Tuần 2-3</td>
+              <td>Chức năng nhập điểm, tính điểm và bảng kết quả kiểm thử.</td>
+            </tr>
+            <tr>
+              <td>Đường Xuân Hội – 26ATT087</td>
+              <td>
+                1. Xây dựng chức năng xếp hạng.<br>
+                2. Sắp xếp kết quả theo điểm.<br>
+                3. Hiển thị thứ hạng.<br>
+                4. Kiểm tra trường hợp bằng điểm và dữ liệu trống.
+              </td>
+              <td>Tuần 3-4</td>
+              <td>Chức năng xếp hạng và bảng kết quả minh họa.</td>
+            </tr>
+            <tr>
+              <td>Trần Văn Phát – 26ATT162</td>
+              <td>
+                1. Kết hợp các phần của website.<br>
+                2. Kiểm tra hoạt động của các chức năng.<br>
+                3. Ghi nhận và kiểm tra lỗi sau khi sửa.<br>
+                4. Chụp ảnh minh họa.<br>
+                5. Hỗ trợ tổng hợp báo cáo.
+              </td>
+              <td>Tuần 4</td>
+              <td>Website hoàn chỉnh, bảng kiểm thử, ảnh minh họa và danh sách lỗi đã xử lý.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>3.7. Kết quả dự kiến</h3>
+      <ul>
+        <li>Trang web chạy ổn định, tính đúng điểm trung bình và xếp hạng đúng thứ tự.</li>
+        <li>Giao diện rõ ràng, dễ sử dụng với học sinh, sinh viên.</li>
+        <li>Báo cáo đầy đủ đề cương, mã nguồn và ảnh kết quả.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ===== Chân trang ===== -->
+  <footer class="site-footer">
+    <p>Năm học 2026–2027 · Học phần: Nhập môn CNTT</p>
+  </footer>
+
+</body>
+</html>
